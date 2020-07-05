@@ -445,6 +445,7 @@ public class FontWorker {
             BufferedImage image;
             try {
                 image = ImageIO.read(new File(imageFile));
+                if (image == null) throw new BadImageDataException("The file " + imageFile + " is not an image file or has no recognizable format.");
             } catch (IIOException e) {
                 if ("Can't read input file!".equals(e.getMessage())) {
                     throw new FileNotFoundException("The file " + imageFile + " was not found.");
